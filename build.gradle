@@ -1,0 +1,48 @@
+plugins {
+    id 'java'
+}
+
+group 'com.github.mrmks.effekseer4j'
+version '0.1.2-SNAPSHOT'
+
+configurations {
+    shade
+    compileOnly.extendsFrom shade
+}
+
+java {
+    sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    testCompileOnly 'junit:junit:4.12'
+
+    implementation platform("org.lwjgl:lwjgl-bom:3.2.3")
+
+    implementation "org.lwjgl:lwjgl"
+    implementation "org.lwjgl:lwjgl-assimp"
+    implementation "org.lwjgl:lwjgl-glfw"
+    implementation "org.lwjgl:lwjgl-openal"
+    implementation "org.lwjgl:lwjgl-opengl"
+    implementation "org.lwjgl:lwjgl-stb"
+    implementation "org.lwjgl:lwjgl::natives-windows"
+    implementation "org.lwjgl:lwjgl-assimp::natives-windows"
+    implementation "org.lwjgl:lwjgl-glfw::natives-windows"
+    implementation "org.lwjgl:lwjgl-openal::natives-windows"
+    implementation "org.lwjgl:lwjgl-opengl::natives-windows"
+    implementation "org.lwjgl:lwjgl-stb::natives-windows"
+
+    shade files('libs/effekseer-native-master-SNAPSHOT.jar')
+    runtimeOnly files('libs/effekseer-native-master-SNAPSHOT.jar')
+}
+
+jar {
+    from {
+        configurations.shade.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
