@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'maven-publish'
 }
 
 group 'com.github.mrmks.effekseer4j'
@@ -44,5 +45,21 @@ dependencies {
 jar {
     from {
         configurations.shade.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+tasks.register('jarSources', org.gradle.jvm.tasks.Jar) {
+    archiveClassifier.set 'source'
+    from sourceSets.main.allSource
+}
+
+publishing {
+    publications {
+        register('product', MavenPublication) {
+            artifactId 'effekseer4j'
+
+            from components.java
+            artifact jarSources
+        }
     }
 }
