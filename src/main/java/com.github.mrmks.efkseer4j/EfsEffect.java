@@ -7,28 +7,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.ref.WeakReference;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
 @SuppressWarnings("unused")
 public final class EfsEffect {
-
-    private static final Queue<WeakReference<EfsEffect>> resources = new ConcurrentLinkedQueue<>();
-    static {
-        Runnable task = () -> resources.forEach(ref -> {
-            EfsEffect effect = ref.get();
-            if (effect != null) effect.delete();
-        });
-
-        Runtime.getRuntime().addShutdownHook(new Thread(task, "Efkseer4J Effects Finalize Hook"));
-        System.runFinalization();
-    }
-
-    private static void enqueueResource(EfsEffect ins) {
-        resources.removeIf(ref -> ref.get() == null);
-        resources.add(new WeakReference<>(ins));
-    }
 
     public enum Texture {
         COLOR(EffekseerTextureType.Color),
@@ -59,7 +40,6 @@ public final class EfsEffect {
     private boolean isLoaded = false;
 
     public EfsEffect() {
-        enqueueResource(this);
         core = new EffekseerEffectCore();
     }
 

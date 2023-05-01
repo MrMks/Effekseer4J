@@ -150,6 +150,10 @@ public class EffekSeer4J {
         return Device.fromSwig(EffekseerBackendCore.GetDevice().swigValue());
     }
 
+    /**
+     * Effekseer use row-major matrix format, but opengl uses column-major matrix format.
+     * Here we transpose matrix if we are in OPENGL context, so that opengl compatible matrix tools can work well;
+     */
     static float[] matrixTranspose(float[] matrix) {
         if (current == Device.OPENGL) {
             float[] copy = new float[16];
