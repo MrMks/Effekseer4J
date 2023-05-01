@@ -48,8 +48,8 @@ jar {
     }
 }
 
-tasks.register('jarSources', org.gradle.jvm.tasks.Jar) {
-    archiveClassifier.set 'source'
+tasks.register('sourceJar', org.gradle.jvm.tasks.Jar) {
+    archiveClassifier.set 'sources'
     from sourceSets.main.allSource
 }
 
@@ -59,7 +59,7 @@ publishing {
             artifactId 'effekseer4j'
 
             from components.java
-            artifact jarSources
+            artifact sourceJar
         }
     }
 }

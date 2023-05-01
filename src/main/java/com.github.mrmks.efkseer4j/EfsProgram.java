@@ -5,6 +5,10 @@ import Effekseer.swig.EffekseerManagerCore;
 import java.util.Objects;
 
 @SuppressWarnings("unused")
+/**
+ * EfsProgram should be deleted at the end of the thread and before destroy the OpenGL context.
+ * Otherwise, software may exit with a non-zero code.
+ */
 public final class EfsProgram {
 
     final EffekseerManagerCore core = new EffekseerManagerCore() {

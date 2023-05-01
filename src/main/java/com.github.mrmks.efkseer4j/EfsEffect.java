@@ -21,7 +21,7 @@ public final class EfsEffect {
             if (effect != null) effect.delete();
         });
 
-        Runtime.getRuntime().addShutdownHook(new Thread(task, "Effekseer Effects Finalize Hook"));
+        Runtime.getRuntime().addShutdownHook(new Thread(task, "Efkseer4J Effects Finalize Hook"));
         System.runFinalization();
     }
 
