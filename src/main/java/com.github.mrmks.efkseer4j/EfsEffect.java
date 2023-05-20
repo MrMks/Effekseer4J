@@ -70,17 +70,12 @@ public final class EfsEffect {
     }
 
     // ======== effect info ========
-    public boolean load(InputStream stream, int length, float amplifier, boolean closeStream) {
-        try {
-            byte[] bytes = readInputStream(stream, length, closeStream);
-            return load(bytes, bytes.length, amplifier);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
+    public boolean load(InputStream stream, int length, float amplifier, boolean closeStream) throws IOException {
+        byte[] bytes = readInputStream(stream, length, closeStream);
+        return load(bytes, bytes.length, amplifier);
     }
 
-    public boolean load(InputStream stream, float amplifier, boolean closeStream) {
+    public boolean load(InputStream stream, float amplifier, boolean closeStream) throws IOException {
         return load(stream, -1, amplifier, closeStream);
     }
 
@@ -98,17 +93,12 @@ public final class EfsEffect {
 
     // ======== textures ========
 
-    public boolean loadTexture(InputStream stream, int length, int index, Texture type, boolean closeStream) {
-        try {
-            byte[] bytes = readInputStream(stream, length, closeStream);
-            return loadTexture(bytes, bytes.length, index, type);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
+    public boolean loadTexture(InputStream stream, int length, int index, Texture type, boolean closeStream) throws IOException {
+        byte[] bytes = readInputStream(stream, length, closeStream);
+        return loadTexture(bytes, bytes.length, index, type);
     }
 
-    public boolean loadTexture(InputStream stream, int index, Texture type, boolean closeStream) {
+    public boolean loadTexture(InputStream stream, int index, Texture type, boolean closeStream) throws IOException {
         return loadTexture(stream, -1, index, type, closeStream);
     }
 
@@ -140,17 +130,12 @@ public final class EfsEffect {
 
     // ======== curves ========
 
-    public boolean loadCurve(InputStream stream, int length, int index, boolean closeStream) {
-        try {
-            byte[] bytes = readInputStream(stream, length, closeStream);
-            return loadCurve(bytes, bytes.length, index);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
+    public boolean loadCurve(InputStream stream, int length, int index, boolean closeStream) throws IOException {
+        byte[] bytes = readInputStream(stream, length, closeStream);
+        return loadCurve(bytes, bytes.length, index);
     }
 
-    public boolean loadCurve(InputStream stream, int index, boolean closeStream) {
+    public boolean loadCurve(InputStream stream, int index, boolean closeStream) throws IOException {
         return loadCurve(stream, -1, index, closeStream);
     }
 
@@ -176,17 +161,12 @@ public final class EfsEffect {
 
     // ======== material ========
 
-    public boolean loadMaterial(InputStream stream, int length, int index, boolean closeStream) {
-        try {
-            byte[] bytes = readInputStream(stream, length, closeStream);
-            return loadMaterial(bytes, bytes.length, index);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
+    public boolean loadMaterial(InputStream stream, int length, int index, boolean closeStream) throws IOException {
+        byte[] bytes = readInputStream(stream, length, closeStream);
+        return loadMaterial(bytes, bytes.length, index);
     }
 
-    public boolean loadMaterial(InputStream stream, int index, boolean closeStream) {
+    public boolean loadMaterial(InputStream stream, int index, boolean closeStream) throws IOException {
         return loadMaterial(stream, -1, index, closeStream);
     }
 
@@ -212,17 +192,12 @@ public final class EfsEffect {
 
     // ======== model ========
 
-    public boolean loadModel(InputStream stream, int length, int index, boolean closeStream) {
-        try {
-            byte[] bytes = readInputStream(stream, length, closeStream);
-            return loadModel(bytes, bytes.length, index);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
+    public boolean loadModel(InputStream stream, int length, int index, boolean closeStream) throws IOException {
+        byte[] bytes = readInputStream(stream, length, closeStream);
+        return loadModel(bytes, bytes.length, index);
     }
 
-    public boolean loadModel(InputStream stream, int index, boolean closeStream) {
+    public boolean loadModel(InputStream stream, int index, boolean closeStream) throws IOException {
         return loadModel(stream, -1, index, closeStream);
     }
 
