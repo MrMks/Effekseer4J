@@ -65,12 +65,25 @@ public final class EfsProgram {
         drawFront();
     }
 
+    public void draw(int layer) {
+        drawBack(layer);
+        drawFront(layer);
+    }
+
     public void drawBack() {
         core.DrawBack();
     }
 
+    public void drawBack(int layer) {
+        core.DrawBack(layer);
+    }
+
     public void drawFront() {
         core.DrawFront();
+    }
+
+    public void drawFront(int layer) {
+        core.DrawFront(layer);
     }
 
     public void setViewport(int width, int height) {
@@ -79,6 +92,14 @@ public final class EfsProgram {
 
     public void setupWorkerThreads(int count) {
         core.LaunchWorkerThreads(count);
+    }
+
+    public void setLayerParameter(int layer, float posX, float posY, float posZ, float distanceBias) {
+        core.SetLayerParameter(layer, posX, posY, posZ, distanceBias);
+    }
+
+    public void setCameraParameter(float frontX, float frontY, float frontZ, float posX, float posY, float posZ) {
+        core.SetCameraParameter(frontX, frontY, frontZ, posX, posY, posZ);
     }
 
     public void setCameraMatrix(float[] matrix) {
@@ -121,6 +142,22 @@ public final class EfsProgram {
                 matrix[indx][0], matrix[indx][1], matrix[indx][2], matrix[indx++][3],
                 matrix[indx][0], matrix[indx][1], matrix[indx][2], matrix[indx][3]
         );
+    }
+
+    public void setDepth(long texture, boolean hasMipmap) {
+        core.SetDepth(texture, hasMipmap);
+    }
+
+    public void unsetDepth() {
+        core.UnsetDepth();
+    }
+
+    public void setBackground(long texture, boolean hasMipmap) {
+        core.SetBackground(texture, hasMipmap);
+    }
+
+    public void unsetBackground() {
+        core.UnsetBackground();
     }
 
     @Override

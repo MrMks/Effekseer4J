@@ -34,6 +34,14 @@ public final class EfsEffectHandle {
         return isVisible;
     }
 
+    public void setLayer(int layer) {
+        manager.core.SetLayer(this.handle, layer);
+    }
+
+    public void sendTrigger(int trigger) {
+        manager.core.SendTrigger(this.handle, trigger);
+    }
+
     public void setVisibility(boolean visible) {
         manager.core.SetShown(this.handle, visible);
         isVisible = visible;
