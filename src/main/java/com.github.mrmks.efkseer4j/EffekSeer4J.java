@@ -37,13 +37,9 @@ public class EffekSeer4J {
 
                 boolean win = System.getProperty("os.name").toLowerCase(Locale.US).contains("win");
                 String lib = win ? "EffekseerNativeForJava.dll" : "libEffekseerNativeForJava.so";
-                File tmpFile;
-                try {
-                    tmpFile = File.createTempFile("efkseer4j-native", win ? ".dll" : ".so");
-                    tmpFile.deleteOnExit();
-                } catch (IOException e) {
-                    throw new RuntimeExceptionNonStack(e);
-                }
+                File tmpFile = new File("efkseer4j-native." + (win ? "dll" : "so"));
+                if (tmpFile.exists() && !tmpFile.delete())
+                    throw new RuntimeExceptionNonStack("Unable to delete old library file, library will not be load.");
 
                 String rs = "native/" + (win ? "windows" : "linux") + "/x86_64/" + lib;
                 InputStream stream = Library.class.getClassLoader().getResourceAsStream(rs);

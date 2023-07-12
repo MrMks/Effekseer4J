@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'com.github.mrmks.effekseer4j'
-version '0.1.10-SNAPSHOT'
+version '0.1.11-SNAPSHOT'
 
 configurations {
     shade
@@ -23,20 +23,20 @@ dependencies {
 
     testCompileOnly 'junit:junit:4.12'
 
-    testRuntimeOnly platform("org.lwjgl:lwjgl-bom:3.2.3")
+    testImplementation platform("org.lwjgl:lwjgl-bom:3.2.3")
 
-    testRuntimeOnly "org.lwjgl:lwjgl"
-    testRuntimeOnly "org.lwjgl:lwjgl-assimp"
-    testRuntimeOnly "org.lwjgl:lwjgl-glfw"
-    testRuntimeOnly "org.lwjgl:lwjgl-openal"
-    testRuntimeOnly "org.lwjgl:lwjgl-opengl"
-    testRuntimeOnly "org.lwjgl:lwjgl-stb"
-    testRuntimeOnly "org.lwjgl:lwjgl::natives-windows"
-    testRuntimeOnly "org.lwjgl:lwjgl-assimp::natives-windows"
-    testRuntimeOnly "org.lwjgl:lwjgl-glfw::natives-windows"
-    testRuntimeOnly "org.lwjgl:lwjgl-openal::natives-windows"
-    testRuntimeOnly "org.lwjgl:lwjgl-opengl::natives-windows"
-    testRuntimeOnly "org.lwjgl:lwjgl-stb::natives-windows"
+    testImplementation "org.lwjgl:lwjgl"
+    testImplementation "org.lwjgl:lwjgl-assimp"
+    testImplementation "org.lwjgl:lwjgl-glfw"
+    testImplementation "org.lwjgl:lwjgl-openal"
+    testImplementation "org.lwjgl:lwjgl-opengl"
+    testImplementation "org.lwjgl:lwjgl-stb"
+    testImplementation "org.lwjgl:lwjgl::natives-windows"
+    testImplementation "org.lwjgl:lwjgl-assimp::natives-windows"
+    testImplementation "org.lwjgl:lwjgl-glfw::natives-windows"
+    testImplementation "org.lwjgl:lwjgl-openal::natives-windows"
+    testImplementation "org.lwjgl:lwjgl-opengl::natives-windows"
+    testImplementation "org.lwjgl:lwjgl-stb::natives-windows"
 
     shade files('libs/effekseer-native-master-SNAPSHOT.jar')
     runtimeOnly files('libs/effekseer-native-master-SNAPSHOT.jar')
